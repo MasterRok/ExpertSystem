@@ -31,12 +31,44 @@ namespace ExpertSystem
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.header = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.SuspendLayout();
+            // 
+            // header
+            // 
+            this.header.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold,
+                System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.header.Location = new System.Drawing.Point(0, 0);
+            this.header.Name = "header";
+            this.header.Size = new System.Drawing.Size(320, 100);
+            this.header.TabIndex = 0;
+            this.header.Text = "Interviewing...";
+            this.header.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(31, 90);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(257, 24);
+            this.progressBar.Step = 1;
+            this.progressBar.TabIndex = 1;
+            // 
+            // Experimenter
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(320, 228);
+            this.Controls.Add(this.progressBar);
+            this.Controls.Add(this.header);
+            this.Name = "Experimenter";
             this.Text = "Experimenter";
+            this.ResumeLayout(false);
         }
 
         #endregion
+
+        private System.Windows.Forms.Label header;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
