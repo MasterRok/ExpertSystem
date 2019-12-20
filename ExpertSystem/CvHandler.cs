@@ -11,9 +11,9 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExpertSystem
 {
-    public class CvHandler
+    public static class CvHandler
     {
-        public Cv LoadCv(string cvFileName)
+        public static Cv LoadCv(string cvFileName)
         {
             var cv = new Cv();
 
@@ -34,7 +34,11 @@ namespace ExpertSystem
             Marshal.ReleaseComObject(workSheet);
             Marshal.ReleaseComObject(workBook);
             Marshal.ReleaseComObject(oExcel);
+            return cv;
+        }
 
+        public static void AnalyzeCv(Cv cv)
+        {
             // Check cv for uncertainty
             if (CheckForUncertainty(cv))
             {
@@ -44,14 +48,13 @@ namespace ExpertSystem
 
                 if (experimenterForm.ShowDialog() == DialogResult.OK)
                 {
-                    return experimenterForm.GetCv();
+                    // return experimenterForm.GetCv();
                 }
             }
-
-            return cv;
         }
 
-        private bool CheckForUncertainty(Cv cv)
+
+        private static bool CheckForUncertainty(Cv cv)
         {
             return true;
         }

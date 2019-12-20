@@ -25,9 +25,16 @@ namespace ExpertSystem
                 if (openCvFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string fileName = openCvFileDialog.FileName;
-                    var cvHandler = new CvHandler();
                     openCvFileDialog.Reset();
-                    cvHandler.LoadCv(fileName);
+                    var cv = CvHandler.LoadCv(fileName);
+                    foreach (var pair in cv)
+                    {
+                        string[] arr = {pair.Key, pair.Value};
+                        lvCv.Items.Add(new ListViewItem(arr));
+                        lvCv.Update();
+                    }
+
+                    CvHandler.AnalyzeCv(cv);
                 }
             }
         }

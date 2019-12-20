@@ -53,6 +53,7 @@ namespace ExpertSystem
             this.progressBar.Size = new System.Drawing.Size(257, 24);
             this.progressBar.Step = 1;
             this.progressBar.TabIndex = 1;
+            this.progressBar.UseWaitCursor = true;
             // 
             // Experimenter
             // 
@@ -62,6 +63,7 @@ namespace ExpertSystem
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.header);
             this.Name = "Experimenter";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Experimenter";
             this.ResumeLayout(false);
         }

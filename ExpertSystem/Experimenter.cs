@@ -26,7 +26,9 @@ namespace ExpertSystem
             if (progressBar.Value == progressBar.Maximum)
                 timer.Enabled = false;
             else
-                progressBar.PerformStep();
+            {
+                progressBar.Invoke(new MethodInvoker(delegate { progressBar.PerformStep(); }));
+            }
         }
 
         public Cv GetCv()

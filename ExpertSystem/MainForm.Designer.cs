@@ -46,7 +46,7 @@
             this.lvCv.GridLines = true;
             this.lvCv.HideSelection = false;
             this.lvCv.ImeMode = System.Windows.Forms.ImeMode.Katakana;
-            this.lvCv.Location = new System.Drawing.Point(53, 88);
+            this.lvCv.Location = new System.Drawing.Point(55, 79);
             this.lvCv.Margin = new System.Windows.Forms.Padding(2);
             this.lvCv.MultiSelect = false;
             this.lvCv.Name = "lvCv";
@@ -67,7 +67,7 @@
             // 
             // btnLoadCv
             // 
-            this.btnLoadCv.Location = new System.Drawing.Point(171, 12);
+            this.btnLoadCv.Location = new System.Drawing.Point(55, 23);
             this.btnLoadCv.Name = "btnLoadCv";
             this.btnLoadCv.Size = new System.Drawing.Size(150, 36);
             this.btnLoadCv.TabIndex = 11;
@@ -83,6 +83,7 @@
             this.Controls.Add(this.lvCv);
             this.Controls.Add(this.btnLoadCv);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.ResumeLayout(false);
         }
