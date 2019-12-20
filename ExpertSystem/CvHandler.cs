@@ -39,12 +39,12 @@ namespace ExpertSystem
 
         public static void AnalyzeCv(Cv cv)
         {
+            var c = KnowledgeBase.MyGraph.Triples.Count;
             // Check cv for uncertainty
             if (CheckForUncertainty(cv))
             {
-                MessageBox.Show("Oops..", "Incorrect cv", MessageBoxButtons.OK);
+                MessageBox.Show("Incorrect CV", "Oops..", MessageBoxButtons.OK);
                 var experimenterForm = new Experimenter(cv);
-                ((Control) WindowsApplication.OpenForms["MainForm"]).Hide();
 
                 if (experimenterForm.ShowDialog() == DialogResult.OK)
                 {
@@ -56,7 +56,13 @@ namespace ExpertSystem
 
         private static bool CheckForUncertainty(Cv cv)
         {
-            return true;
+            foreach (var row in cv)
+            {
+                if ((row.Value == null || row.Value.Trim().Equals("")) && row.Key.Equals("Навык"))
+                    return true; // Empty Skill Value
+            }
+
+            return false;
         }
     }
 }

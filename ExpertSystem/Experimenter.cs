@@ -35,5 +35,16 @@ namespace ExpertSystem
         {
             return _cv;
         }
+
+        private void Experimenter_Load(object sender, EventArgs e)
+        {
+            ((Control) Application.OpenForms["MainForm"]).Hide();
+
+        }
+
+        private void Experimenter_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ((Control) Application.OpenForms["MainForm"]).Show();
+        }
     }
 }

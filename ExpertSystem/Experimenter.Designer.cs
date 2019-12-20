@@ -65,6 +65,8 @@ namespace ExpertSystem
             this.Name = "Experimenter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Experimenter";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Experimenter_FormClosing);
+            this.Load += new System.EventHandler(this.Experimenter_Load);
             this.ResumeLayout(false);
         }
 

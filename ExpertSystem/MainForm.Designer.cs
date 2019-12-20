@@ -46,7 +46,7 @@
             this.lvCv.GridLines = true;
             this.lvCv.HideSelection = false;
             this.lvCv.ImeMode = System.Windows.Forms.ImeMode.Katakana;
-            this.lvCv.Location = new System.Drawing.Point(55, 79);
+            this.lvCv.Location = new System.Drawing.Point(55, 78);
             this.lvCv.Margin = new System.Windows.Forms.Padding(2);
             this.lvCv.MultiSelect = false;
             this.lvCv.Name = "lvCv";
