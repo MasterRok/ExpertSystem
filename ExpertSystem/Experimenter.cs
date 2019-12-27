@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Timers;
 using System.Windows.Forms;
 
@@ -22,6 +23,20 @@ namespace ExpertSystem
             timer.Enabled = true;
 
             var jobName = _cv.FindValueByKey("Должность");
+
+            if (!_cv.IsValueExists("Имя"))
+            {
+                var names = new[] {"Андрей", "Игорь", "Анатолий", "Вячеслав", "Никита", "Николай", "Кирилл"};
+                Random rand = new Random();
+                _cv.UpdateValue("Имя", names[rand.Next(names.Length)]);
+            }
+
+            if (!_cv.IsValueExists("Фамилия"))
+            {
+                var surnames = new[] {"Смирнов", "Родионов", "Соловьёв", "Комаров", "Семёнов", "Самойлов", "Веселов"};
+                Random rand = new Random();
+                _cv.UpdateValue("Фамилия", surnames[rand.Next(surnames.Length)]);
+            }
 
             // If job is specified
             if (jobs.Find(job => job.Name.Equals(jobName)) != null)
@@ -46,7 +61,44 @@ namespace ExpertSystem
             }
             else
             {
-                
+                var skillsList = new List<string>();
+                foreach (var job in jobs)
+                {
+                    foreach (var skill in job.Skills)
+                        skillsList.Add(skill);
+                }
+
+                skillsList = new List<string>(skillsList.Distinct());
+                Reshuffle(skillsList);
+
+                bool canGetJob = false;
+                foreach (var skill in skillsList)
+                {
+                    var answer = "";
+                    var result = NeuralNetwork.Analyze(skill, answer);
+                    Console.WriteLine($"Testing skill:\t{skill}:\t{result}");
+                    if (result)
+                    {
+                        _cv.Add("Навык", skill);
+                        foreach (var job in jobs)
+                        {
+                            bool isEnough = true;
+                            // Check if enough skills for any job
+                            var requiredSkills = jobs.Find(j => job.Name == j.Name).Skills;
+                            foreach (var s in requiredSkills)
+                                if (!_cv.IsSkillExists(s))
+                                    isEnough = false;
+                            canGetJob = isEnough;
+                            if (isEnough)
+                            {
+                                offeredJob = job.Name;
+                                break;
+                            }
+                        }
+
+                        if (canGetJob) break;
+                    }
+                }
             }
         }
 
@@ -57,6 +109,18 @@ namespace ExpertSystem
                 string tmp = texts[t];
                 var random = new Random();
                 int r = random.Next(t, texts.Length);
+                texts[t] = texts[r];
+                texts[r] = tmp;
+            }
+        }
+
+        void Reshuffle(List<string> texts)
+        {
+            for (int t = 0; t < texts.Count; t++)
+            {
+                string tmp = texts[t];
+                var random = new Random();
+                int r = random.Next(t, texts.Count);
                 texts[t] = texts[r];
                 texts[r] = tmp;
             }
@@ -92,7 +156,7 @@ namespace ExpertSystem
 
         private void Experimenter_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ((Control) Application.OpenForms["MainForm"]).Show(); 
+            ((Control) Application.OpenForms["MainForm"]).Show();
         }
     }
 }

@@ -52,6 +52,10 @@ namespace ExpertSystem
                     MessageBox.Show(res, "Result", MessageBoxButtons.OK);
                 }
             }
+            else
+            {
+                MessageBox.Show(cv.FindValueByKey("Должность"), "Result", MessageBoxButtons.OK);
+            }
             
             DataBase.Add(cv);
         }

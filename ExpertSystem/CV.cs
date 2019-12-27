@@ -7,8 +7,6 @@ namespace ExpertSystem
     {
         private List<KeyValuePair<string, string>> data = new List<KeyValuePair<string, string>>();
 
-        public int Count => data.Count;
-
         public void Add(string key, string value)
         {
             data.Add(new KeyValuePair<string, string>(key, value));
@@ -37,6 +35,12 @@ namespace ExpertSystem
         IEnumerator IEnumerable.GetEnumerator()
         {
             return data.GetEnumerator();
+        }
+
+        public void UpdateValue(string key, string value)
+        {
+            int index = data.FindIndex(p => p.Key == key);
+            data[index] = new KeyValuePair<string, string>(key, value);
         }
 
         public Cv FilterValues()
