@@ -71,7 +71,7 @@
             this.btnLoadCv.Name = "btnLoadCv";
             this.btnLoadCv.Size = new System.Drawing.Size(150, 36);
             this.btnLoadCv.TabIndex = 11;
-            this.btnLoadCv.Text = "Load cv";
+            this.btnLoadCv.Text = "Выбрать резюме";
             this.btnLoadCv.UseVisualStyleBackColor = true;
             this.btnLoadCv.Click += new System.EventHandler(this.btnLoadCv_Click);
             // 
