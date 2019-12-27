@@ -45,13 +45,15 @@ namespace ExpertSystem
                 MessageBox.Show("Incorrect CV", "Oops..", MessageBoxButtons.OK);
                 var experimenterForm = new Experimenter(cv, jobs);
                 
-                
+                // Eyes hurts
                 if (experimenterForm.ShowDialog() == DialogResult.OK || true)
                 {
                     var res = experimenterForm.GetJobResult();
                     MessageBox.Show(res, "Result", MessageBoxButtons.OK);
                 }
             }
+            
+            DataBase.Add(cv);
         }
 
 

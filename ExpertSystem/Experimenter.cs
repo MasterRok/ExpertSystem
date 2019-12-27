@@ -29,21 +29,24 @@ namespace ExpertSystem
                 // Check for unknown skills
                 var requiredSkills = jobs.Find(job => jobName == job.Name).Skills;
                 Reshuffle(requiredSkills);
+                offeredJob = jobName;
                 foreach (var skill in requiredSkills)
                     if (!_cv.IsSkillExists(skill))
                     {
-                        Console.WriteLine($"Testing skill: {skill}");
                         var answer = "";
                         var result = NeuralNetwork.Analyze(skill, answer);
+                        Console.WriteLine($"Testing skill:\t{skill}:\t{result}");
+
                         if (!result)
                         {
-                            offeredJob = "Oops.. I can't get this job :(";
+                            offeredJob = "Oops.. You can't get this job :(";
                             break;
                         }
                     }
             }
             else
             {
+                
             }
         }
 
