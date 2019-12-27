@@ -38,7 +38,7 @@ namespace ExpertSystem
             using (var r = new StreamReader(Resources.TranslationFileName))
             {
                 var json = r.ReadToEnd();
-                var jobj = JObject.Parse(json);
+                var jObject = JObject.Parse(json);
                     
                 foreach (var roleTriple in roleTriples)
                 {
@@ -46,11 +46,11 @@ namespace ExpertSystem
                     var skillTriplesEnumerator = MyGraph.GetTriplesWithPredicateObject(
                         MyGraph.CreateUriNode("pred:inOrderTo"), MyGraph.GetUriNode($"po:{jobName}"));
 
-                    jobName = jobj.SelectToken($"$.jobs.{jobName}").ToString();
+                    jobName = jObject.SelectToken($"$.jobs.{jobName}").ToString();
                     var jobSkills = new List<string>();
                     foreach (var skillTriple in skillTriplesEnumerator)
                     {
-                        jobSkills.Add(jobj.SelectToken($"$.skills.{GetNodeNameLocal(skillTriple.Subject)}").ToString());
+                        jobSkills.Add(jObject.SelectToken($"$.skills.{GetNodeNameLocal(skillTriple.Subject)}").ToString());
                     }
 
                     jobs.Add(new Job(jobName, jobSkills.ToArray()));

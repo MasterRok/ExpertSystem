@@ -36,6 +36,7 @@ namespace ExpertSystem
 
                     var jobs = KnowledgeBase.GetJobs();
 
+                    cv = cv.FilterValues();
                     CvHandler.AnalyzeCv(cv, jobs);
                 }
             }

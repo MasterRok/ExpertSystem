@@ -55,15 +55,22 @@ namespace ExpertSystem
 
         private static bool CheckForUncertainty(Cv cv, List<Job> jobs)
         {
-            var correctCv = new Cv();
-            var careerObj = cv.FindValueByKey("Должность");
-            // if(careerObj == null || )
+            var jobName = cv.FindValueByKey("Должность");
+            // If position is not specified
+            if (jobs.Find(job => job.Name.Equals(jobName))==null)
+                return true;
 
-            foreach (var row in cv)
-            {
-                if ((row.Value == null || row.Value.Trim().Equals("")) && row.Key.Equals("Навык"))
-                    return true; // Empty Skill Value
-            }
+            // If bio is not specified
+            if (!cv.IsValueExists("Имя"))
+                return true;
+            if (!cv.IsValueExists("Фамилия"))
+                return true;
+            
+            // Check if enough skills for any job
+            var requiredSkills = jobs.Find(job => jobName == job.Name).Skills;
+            foreach (var skill in requiredSkills)
+                if (!cv.IsSkillExists(skill))
+                    return true;
 
             return false;
         }

@@ -11,7 +11,7 @@ namespace ExpertSystem
             Name = name;
         }
 
-        private string Name { get; }
-        private string[] Skills { get; }
+        public string Name { get; }
+        public string[] Skills { get; }
     }
 }
