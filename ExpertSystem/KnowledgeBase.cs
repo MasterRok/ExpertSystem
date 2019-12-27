@@ -34,7 +34,6 @@ namespace ExpertSystem
             var roleTriples = MyGraph.GetTriplesWithPredicateObject(
                 MyGraph.CreateUriNode("rdf:type"), MyGraph.GetUriNode("pc:role"));
 
-            // string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\Data\translation.json");
             using (var r = new StreamReader(Resources.TranslationFileName))
             {
                 var json = r.ReadToEnd();

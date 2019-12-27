@@ -6,7 +6,7 @@ namespace ExpertSystem
     {
         public static void Add(Cv cv)
         {
-            Console.WriteLine("You have added CV to DB!");
+            Console.WriteLine("Вы добавили информацию в БД!");
         }
     }
 }

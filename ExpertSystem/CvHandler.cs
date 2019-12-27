@@ -42,19 +42,19 @@ namespace ExpertSystem
             // Check cv for uncertainty
             if (CheckForUncertainty(cv, jobs))
             {
-                MessageBox.Show("Incorrect CV", "Oops..", MessageBoxButtons.OK);
+                MessageBox.Show("Неправильное резюме", "Упс..", MessageBoxButtons.OK);
                 var experimenterForm = new Experimenter(cv, jobs);
                 
                 // Eyes hurts
                 if (experimenterForm.ShowDialog() == DialogResult.OK || true)
                 {
                     var res = experimenterForm.GetJobResult();
-                    MessageBox.Show(res, "Result", MessageBoxButtons.OK);
+                    MessageBox.Show(res, "Результат", MessageBoxButtons.OK);
                 }
             }
             else
             {
-                MessageBox.Show(cv.FindValueByKey("Должность"), "Result", MessageBoxButtons.OK);
+                MessageBox.Show(cv.FindValueByKey("Должность"), "Результат", MessageBoxButtons.OK);
             }
             
             DataBase.Add(cv);

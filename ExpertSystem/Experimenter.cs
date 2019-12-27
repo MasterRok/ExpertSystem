@@ -50,11 +50,11 @@ namespace ExpertSystem
                     {
                         var answer = "";
                         var result = NeuralNetwork.Analyze(skill, answer);
-                        Console.WriteLine($"Testing skill:\t{skill}:\t{result}");
+                        Console.WriteLine($"Тестируем навык:\t{skill}:\t{result}");
 
                         if (!result)
                         {
-                            offeredJob = "Oops.. You can't get this job :(";
+                            offeredJob = "Упс.. Вы не получили работу :(";
                             break;
                         }
                     }
@@ -76,7 +76,7 @@ namespace ExpertSystem
                 {
                     var answer = "";
                     var result = NeuralNetwork.Analyze(skill, answer);
-                    Console.WriteLine($"Testing skill:\t{skill}:\t{result}");
+                    Console.WriteLine($"Тестируем навык:\t{skill}:\t{result}");
                     if (result)
                     {
                         _cv.Add("Навык", skill);
@@ -98,6 +98,10 @@ namespace ExpertSystem
 
                         if (canGetJob) break;
                     }
+                }
+                if (!canGetJob)
+                {
+                    offeredJob = "Упс.. Вы не получили работу :(";
                 }
             }
         }
@@ -131,7 +135,7 @@ namespace ExpertSystem
             if (progressBar.Value == progressBar.Maximum)
             {
                 timer.Enabled = false;
-                MessageBox.Show("Finished!");
+                MessageBox.Show("Готово! Закройте окно.");
             }
             else
             {
