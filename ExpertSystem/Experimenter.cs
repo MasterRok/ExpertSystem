@@ -50,7 +50,7 @@ namespace ExpertSystem
                     {
                         var answer = "";
                         var result = NeuralNetwork.Analyze(skill, answer);
-                        Console.WriteLine($"Тестируем навык:\t{skill}:\t{result}");
+                        System.Diagnostics.Debug.WriteLine($"Тестируем навык:\t{skill}:\t{result}");
 
                         if (!result)
                         {
@@ -76,7 +76,7 @@ namespace ExpertSystem
                 {
                     var answer = "";
                     var result = NeuralNetwork.Analyze(skill, answer);
-                    Console.WriteLine($"Тестируем навык:\t{skill}:\t{result}");
+                    System.Diagnostics.Debug.WriteLine($"Тестируем навык:\t{skill}:\t{result}");
                     if (result)
                     {
                         _cv.Add("Навык", skill);

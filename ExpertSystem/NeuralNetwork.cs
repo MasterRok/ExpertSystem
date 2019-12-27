@@ -9,7 +9,7 @@ namespace ExpertSystem
         public static bool Analyze(string skillName, string result)
         {
             
-            return Random.Next(0,3) != 0;
+            return Random.Next(0,2) != 0;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace ExpertSystem
 
         static KnowledgeBase()
         {
-            Console.WriteLine(Application.StartupPath);
+            System.Diagnostics.Debug.WriteLine(Application.StartupPath);
             FileLoader.Load(MyGraph, Resources.KnowledgeBaseFileName);
         }
 

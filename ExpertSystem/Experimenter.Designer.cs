@@ -41,14 +41,14 @@ namespace ExpertSystem
                 System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.header.Location = new System.Drawing.Point(0, 0);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(320, 100);
+            this.header.Size = new System.Drawing.Size(320, 126);
             this.header.TabIndex = 0;
             this.header.Text = "Проводится собеседование...";
             this.header.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(30, 103);
+            this.progressBar.Location = new System.Drawing.Point(31, 129);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(257, 24);
             this.progressBar.Step = 1;
