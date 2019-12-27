@@ -81,7 +81,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-add     <Compile Include="NeuralNetwork.cs" />
+    <Compile Include="NeuralNetwork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Experimenter.resx">
@@ -113,6 +113,7 @@ add     <Compile Include="NeuralNetwork.cs" />
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\knowledge.n3" />
     <Content Include="Data\translation.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

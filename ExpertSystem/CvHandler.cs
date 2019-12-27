@@ -43,11 +43,13 @@ namespace ExpertSystem
             if (CheckForUncertainty(cv, jobs))
             {
                 MessageBox.Show("Incorrect CV", "Oops..", MessageBoxButtons.OK);
-                var experimenterForm = new Experimenter(cv);
-
-                if (experimenterForm.ShowDialog() == DialogResult.OK)
+                var experimenterForm = new Experimenter(cv, jobs);
+                
+                
+                if (experimenterForm.ShowDialog() == DialogResult.OK || true)
                 {
-                    // return experimenterForm.GetCv();
+                    var res = experimenterForm.GetJobResult();
+                    MessageBox.Show(res, "Result", MessageBoxButtons.OK);
                 }
             }
         }
@@ -56,8 +58,8 @@ namespace ExpertSystem
         private static bool CheckForUncertainty(Cv cv, List<Job> jobs)
         {
             var jobName = cv.FindValueByKey("Должность");
-            // If position is not specified
-            if (jobs.Find(job => job.Name.Equals(jobName))==null)
+            // If job is not specified
+            if (jobs.Find(job => job.Name.Equals(jobName)) == null)
                 return true;
 
             // If bio is not specified
@@ -65,7 +67,7 @@ namespace ExpertSystem
                 return true;
             if (!cv.IsValueExists("Фамилия"))
                 return true;
-            
+
             // Check if enough skills for any job
             var requiredSkills = jobs.Find(job => jobName == job.Name).Skills;
             foreach (var skill in requiredSkills)

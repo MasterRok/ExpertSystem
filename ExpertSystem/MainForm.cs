@@ -38,6 +38,7 @@ namespace ExpertSystem
 
                     cv = cv.FilterValues();
                     CvHandler.AnalyzeCv(cv, jobs);
+                    lvCv.Clear();
                 }
             }
         }

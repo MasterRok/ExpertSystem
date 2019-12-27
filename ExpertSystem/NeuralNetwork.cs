@@ -4,10 +4,11 @@ namespace ExpertSystem
 {
     public static class NeuralNetwork
     {
+        private static readonly Random Random = new Random();
+
         public static bool Analyze(string skillName, string result)
         {
-            var random = new Random();
-            return random.Next(0, 1) == 0;
+            return Random.Next(0,2) == 0;
         }
     }
 }
