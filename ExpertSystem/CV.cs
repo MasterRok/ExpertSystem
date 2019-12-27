@@ -14,6 +14,11 @@ namespace ExpertSystem
             data.Add(new KeyValuePair<string, string>(key, value));
         }
 
+        public string FindValueByKey(string key)
+        {
+            return data.Find(obj => obj.Key == key).Value;
+        }
+        
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
         {
             return data.GetEnumerator();

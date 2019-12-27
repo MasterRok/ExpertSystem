@@ -117,6 +117,9 @@
   <knowledgeBaseFile>
   </knowledgeBaseFile>
   <data name="KnowledgeBaseFileName" >
-    <value>knowledge.n3</value>
+    <value>..\..\Data\knowledge.n3</value>
+  </data>  
+  <data name="TranslationFileName" >
+    <value>..\..\Data\translation.json</value>
   </data>
 </root>

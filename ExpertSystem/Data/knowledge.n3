@@ -1,0 +1,32 @@
+                            @prefix pred:    <URN:plintumPredicates:> .
+                            @prefix pc:    <URN:plintumClasses:> .
+                            @prefix po:    <URN:plintumObjects:> .
+                            @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+                            @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+                            
+                            pc:role a  rdfs:Class .
+                            
+                            pc:skill a  rdfs:Class .
+                            
+                            po:chatAdmin	a	pc:role .
+                            
+                            po:usersAdmin	a	pc:role .
+                            
+                            po:annotator	a	pc:role .
+                            
+                            po:testChatWriter	a	pc:role .
+                            
+                            po:creativity	a	pc:skill ; 
+                            		pred:inOrderTo po:chatAdmin,	po:testChatWriter .
+                            
+                            po:orthography	a	pc:skill ;
+                            		pred:inOrderTo	po:testChatWriter, po:chatAdmin, po:annotator .
+                            
+                            po:personalManagement	a	pc:skill ;
+                            		pred:inOrderTo	po:usersAdmin, po:chatAdmin .
+                            
+                            po:textMarkup	a	pc:skill ;
+                            		pred:inOrderTo	po:annotator .
+                            
+                            po:sentenceAnalysis	a	pc:skill ;
+                            		pred:inOrderTo	po:annotator .

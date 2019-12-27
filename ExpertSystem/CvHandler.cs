@@ -40,7 +40,7 @@ namespace ExpertSystem
         public static void AnalyzeCv(Cv cv, List<Job> jobs)
         {
             // Check cv for uncertainty
-            if (CheckForUncertainty(cv))
+            if (CheckForUncertainty(cv, jobs))
             {
                 MessageBox.Show("Incorrect CV", "Oops..", MessageBoxButtons.OK);
                 var experimenterForm = new Experimenter(cv);
@@ -53,8 +53,12 @@ namespace ExpertSystem
         }
 
 
-        private static bool CheckForUncertainty(Cv cv)
+        private static bool CheckForUncertainty(Cv cv, List<Job> jobs)
         {
+            var correctCv = new Cv();
+            var careerObj = cv.FindValueByKey("Должность");
+            // if(careerObj == null || )
+
             foreach (var row in cv)
             {
                 if ((row.Value == null || row.Value.Trim().Equals("")) && row.Key.Equals("Навык"))

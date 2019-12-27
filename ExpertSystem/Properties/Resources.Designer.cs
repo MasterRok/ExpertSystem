@@ -61,11 +61,20 @@ namespace ExpertSystem.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to knowledge.n3.
+        ///   Looks up a localized string similar to ..\..\Data\knowledge.n3.
         /// </summary>
         internal static string KnowledgeBaseFileName {
             get {
                 return ResourceManager.GetString("KnowledgeBaseFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ..\..\Data\translation.json.
+        /// </summary>
+        internal static string TranslationFileName {
+            get {
+                return ResourceManager.GetString("TranslationFileName", resourceCulture);
             }
         }
     }

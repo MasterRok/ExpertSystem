@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using VDS.RDF;
 using VDS.RDF.Parsing;
 using ExpertSystem.Properties;
+using Newtonsoft.Json.Linq;
 
 namespace ExpertSystem
 {
@@ -32,16 +34,27 @@ namespace ExpertSystem
             var roleTriples = MyGraph.GetTriplesWithPredicateObject(
                 MyGraph.CreateUriNode("rdf:type"), MyGraph.GetUriNode("pc:role"));
 
-            foreach (var roleTriple in roleTriples)
+            // string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\Data\translation.json");
+            using (var r = new StreamReader(Resources.TranslationFileName))
             {
-                var jobName = GetNodeNameLocal(roleTriple.Subject);
-                var skillTriplesEnumerator = MyGraph.GetTriplesWithPredicateObject(
-                    MyGraph.CreateUriNode("pred:inOrderTo"), MyGraph.GetUriNode($"po:{jobName}"));
+                var json = r.ReadToEnd();
+                var jobj = JObject.Parse(json);
+                    
+                foreach (var roleTriple in roleTriples)
+                {
+                    var jobName = GetNodeNameLocal(roleTriple.Subject);
+                    var skillTriplesEnumerator = MyGraph.GetTriplesWithPredicateObject(
+                        MyGraph.CreateUriNode("pred:inOrderTo"), MyGraph.GetUriNode($"po:{jobName}"));
 
-                var jobSkills = new List<string>();
-                foreach (var skillTriple in skillTriplesEnumerator)
-                    jobSkills.Add(GetNodeNameLocal(skillTriple.Subject));
-                jobs.Add(new Job(jobName, jobSkills.ToArray()));
+                    jobName = jobj.SelectToken($"$.jobs.{jobName}").ToString();
+                    var jobSkills = new List<string>();
+                    foreach (var skillTriple in skillTriplesEnumerator)
+                    {
+                        jobSkills.Add(jobj.SelectToken($"$.skills.{GetNodeNameLocal(skillTriple.Subject)}").ToString());
+                    }
+
+                    jobs.Add(new Job(jobName, jobSkills.ToArray()));
+                }
             }
 
             return jobs;

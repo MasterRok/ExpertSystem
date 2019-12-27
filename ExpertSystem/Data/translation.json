@@ -1,0 +1,15 @@
+﻿{
+  "jobs": {
+    "annotator": "Аннотатор",
+    "testChatWriter": "Написатель тестового чата",
+    "chatAdmin": "Администратор чата",
+    "usersAdmin": "Администратор пользователей"
+  },
+  "skills": {
+    "textMarkup": "Разметка текста",
+    "sentenceAnalysis": "Анализ предложений",
+    "orthography": "Орфография",
+    "creativity": "Креативность",
+    "personalManagement": "Управление персоналом"
+  }
+}
