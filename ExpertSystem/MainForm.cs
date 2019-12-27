@@ -34,7 +34,9 @@ namespace ExpertSystem
                         lvCv.Update();
                     }
 
-                    CvHandler.AnalyzeCv(cv);
+                    var jobs = KnowledgeBase.GetJobs();
+
+                    CvHandler.AnalyzeCv(cv, jobs);
                 }
             }
         }

@@ -37,9 +37,8 @@ namespace ExpertSystem
             return cv;
         }
 
-        public static void AnalyzeCv(Cv cv)
+        public static void AnalyzeCv(Cv cv, List<Job> jobs)
         {
-            var c = KnowledgeBase.MyGraph.Triples.Count;
             // Check cv for uncertainty
             if (CheckForUncertainty(cv))
             {

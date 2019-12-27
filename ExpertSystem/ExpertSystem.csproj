@@ -66,12 +66,14 @@
   <ItemGroup>
     <Compile Include="CV.cs" />
     <Compile Include="CvHandler.cs" />
+    <Compile Include="DataBase.cs" />
     <Compile Include="Experimenter.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Experimenter.Designer.cs">
       <DependentUpon>Experimenter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Job.cs" />
     <Compile Include="KnowledgeBase.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
